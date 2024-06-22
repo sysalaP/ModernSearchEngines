@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result Presentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleClearButton() {
+            const input = document.getElementById('search-input');
+            const clearButton = document.getElementById('clear-button');
+            if (input.value.length > 0) {
+                clearButton.style.display = 'inline';
+            } else {
+                clearButton.style.display = 'none';
+            }
+        }
+
+        function clearSearchInput() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            toggleClearButton();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="search-container">
+            <form method="post" action="/search" oninput="toggleClearButton()">
+                <input type="text" id="search-input" name="query" placeholder="Search" required>
+                <button type="button" id="clear-button" onclick="clearSearchInput()" style="display: none;">&times;</button>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+    <main  style="background-image: url('{{ url_for('static', filename='istockphoto-870412300-1024x1024.jpg') }}');">
+        <section id="categories">
+            {% for category, topics in categories.items() %}
+            <div class="category-column">
+                <div class="category-title">{{ category }}</div>
+                {% for topic in topics %}
+                <a href="#" class="category-item">
+                    <div class="category-icon">#</div>
+                    <div>{{ topic }}</div>
+                </a>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Result Presentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleClearButton() {
+            const input = document.getElementById('search-input');
+            const clearButton = document.getElementById('clear-button');
+            if (input.value.length > 0) {
+                clearButton.style.display = 'inline';
+            } else {
+                clearButton.style.display = 'none';
+            }
+        }
+
+        function clearSearchInput() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            toggleClearButton();
+        }
+    </script>
+</head>
+<body style="background-image: url('{{ url_for('static', filename='istockphoto-870412300-1024x1024.jpg') }}');">
+    <header>
+        <div class="search-container">
+            <form method="post" action="/search" oninput="toggleClearButton()">
+                <input type="text" id="search-input" name="query" placeholder="Search" required>
+                <button type="button" id="clear-button" onclick="clearSearchInput()" style="display: none;">&times;</button>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <aside>
+            <h2>Categories:</h2>
+            <ul>
+                {% for category, topics in categories.items() %}
+                    <li>
+                        <details>
+                            <summary>{{ category }}</summary>
+                            <ul>
+                                {% for topic in topics %}
+                                    <li>{{ topic }}</li>
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <section id="search-results">
+            <h2>Search results for "{{ query }}":</h2>
+            <ul>
+                {% for result in results %}
+                    <li class="result-item">
+                        <img src="{{ result.image }}" alt="{{ result.title }}" class="result-image">
+                        <div class="result-content">
+                            <a href="{{ result.url }}" target="_blank" class="result-title">{{ result.title }}</a>
+                            <p class="result-snippet">{{ result.snippet }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
