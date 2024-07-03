@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Result Presentation</title>
+    <title>MSE2024</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         function toggleClearButton() {
@@ -21,25 +21,31 @@
             input.value = '';
             toggleClearButton();
         }
+
+        function submitQuery(query) {
+            const input = document.getElementById('search-input');
+            input.value = query;
+            document.getElementById('search-form').submit();
+        }
     </script>
 </head>
 <body>
     <header>
         <div class="search-container">
-            <form method="post" action="/search" oninput="toggleClearButton()">
+            <form id="search-form" method="post" action="/search" oninput="toggleClearButton()">
                 <input type="text" id="search-input" name="query" placeholder="Search" required>
                 <button type="button" id="clear-button" onclick="clearSearchInput()" style="display: none;">&times;</button>
                 <button type="submit">Search</button>
             </form>
         </div>
     </header>
-    <main  style="background-image: url('{{ url_for('static', filename='istockphoto-870412300-1024x1024.jpg') }}');">
+    <main>
         <section id="categories">
             {% for category, topics in categories.items() %}
             <div class="category-column">
                 <div class="category-title">{{ category }}</div>
                 {% for topic in topics %}
-                <a href="#" class="category-item">
+                <a href="javascript:void(0);" onclick="submitQuery('{{ topic }}')" class="category-item">
                     <div class="category-icon">#</div>
                     <div>{{ topic }}</div>
                 </a>

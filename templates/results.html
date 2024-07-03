@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Result Presentation</title>
+    <title>MSE2024</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script>
         function toggleClearButton() {
@@ -21,12 +21,18 @@
             input.value = '';
             toggleClearButton();
         }
+
+        function submitQuery(query) {
+            const input = document.getElementById('search-input');
+            input.value = query;
+            document.getElementById('search-form').submit();
+        }
     </script>
 </head>
-<body style="background-image: url('{{ url_for('static', filename='istockphoto-870412300-1024x1024.jpg') }}');">
+<body>
     <header>
         <div class="search-container">
-            <form method="post" action="/search" oninput="toggleClearButton()">
+            <form id="search-form" method="post" action="/search" oninput="toggleClearButton()">
                 <input type="text" id="search-input" name="query" placeholder="Search" required>
                 <button type="button" id="clear-button" onclick="clearSearchInput()" style="display: none;">&times;</button>
                 <button type="submit">Search</button>
@@ -43,7 +49,7 @@
                             <summary>{{ category }}</summary>
                             <ul>
                                 {% for topic in topics %}
-                                    <li>{{ topic }}</li>
+                                    <li><a href="javascript:void(0);" onclick="submitQuery('{{ topic }}')">{{ topic }}</a></li>
                                 {% endfor %}
                             </ul>
                         </details>
@@ -53,17 +59,17 @@
         </aside>
         <section id="search-results">
             <h2>Search results for "{{ query }}":</h2>
-            <ul>
+            <div class="results-container">
                 {% for result in results %}
-                    <li class="result-item">
+                    <div class="result-item">
                         <img src="{{ result.image }}" alt="{{ result.title }}" class="result-image">
                         <div class="result-content">
                             <a href="{{ result.url }}" target="_blank" class="result-title">{{ result.title }}</a>
                             <p class="result-snippet">{{ result.snippet }}</p>
                         </div>
-                    </li>
+                    </div>
                 {% endfor %}
-            </ul>
+            </div>
         </section>
     </main>
 </body>
