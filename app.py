@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 def fetch_url_data(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url, verify=False)  # SSL-Verifikation deaktivieren
         if response.status_code == 200:
             return response.text
         else:
