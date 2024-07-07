@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 
 #Create a hash for text thats similar for similar texts
 def computeHash(words):
-     hash_length = 16
+     hash_length = 64
      fingerprint = [0] * hash_length
      for word in words:
           #Hash the word and convert it to binary
