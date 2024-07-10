@@ -28,6 +28,10 @@ urls = [
     "https://www.tuebingen.de/en/3521.html",
     "https://www.komoot.com/guide/355570/castles-in-tuebingen-district",
     "https://www.unimuseum.uni-tuebingen.de/en/museum-at-hohentuebingen-castle",
+    "https://www.kreis-tuebingen.de/Startseite",
+    "https://www.swr.de/swraktuell/baden-wuerttemberg/tuebingen/abistreich-in-tuebingen-eskaliert-102.html",
+    "https://www.swtue.de/baeder/freibad.html"
+
 ]
 
 categories = {
