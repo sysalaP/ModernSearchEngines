@@ -21,7 +21,7 @@ def extract_info(html):
     meta_desc = soup.find('meta', attrs={'name': 'description'})
     description = meta_desc['content'] if meta_desc else 'No description'
     og_image = soup.find('meta', attrs={'property': 'og:image'})
-    image_url = og_image['content'] if og_image else 'default_image.jpg'
+    image_url = og_image['content'] if og_image else 'static/tuebingen.jpg'
     return title, description, image_url
 
 urls = [
