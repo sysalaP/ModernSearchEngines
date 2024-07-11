@@ -40,23 +40,6 @@
         </div>
     </header>
     <main>
-        <aside>
-            <h2>Categories:</h2>
-            <ul>
-                {% for category, topics in categories.items() %}
-                    <li>
-                        <details>
-                            <summary>{{ category }}</summary>
-                            <ul>
-                                {% for topic in topics %}
-                                    <li><a href="javascript:void(0);" onclick="submitQuery('{{ topic }}')">{{ topic }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </details>
-                    </li>
-                {% endfor %}
-            </ul>
-        </aside>
         <section id="search-results">
             <h2>Search results for "{{ query }}":</h2>
             <div class="results-container">
