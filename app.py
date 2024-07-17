@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import json
 import logging
 import os
-from ipynb.fs.full.MSE_24_Group_Projects import retrieve
-
+from collections import Counter
 
 app = Flask(__name__)
 
@@ -18,21 +17,6 @@ def load_json_file(file_path):
         logging.error(f"Error loading JSON from {file_path}: {e}")
     return {}
 
-# Split of the attributes of the results
-def load_search_results(file_path):
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return [
-                {'query_number': line.split('\t')[0], 'rank': line.split('\t')[1], 
-                 'url': line.split('\t')[2], 'score': line.split('\t')[3], 'filter': line.split('\t')[4]}
-                for line in f if len(line.split('\t')) == 5
-            ]
-    except Exception as e:
-        logging.error(f"Error loading search results from {file_path}: {e}")
-    return []
-
-ranking = retrieve('tübingen location', load_json_file('index.json'))
-
 # Get the Image of each document
 def find_image(index):
     supported_formats = ['.svg', '.png', '.jpg', '.jpeg']
@@ -42,12 +26,10 @@ def find_image(index):
             return img_path
     return 'static/pictures/default_picture.jpg'
 
-# Path search results
-search_results = load_search_results('src/search_results.txt')
 # Path categories
 categories = load_json_file('static/categories.json')
 
-#Get title and description
+# Get title and description
 def get_info(index):
     json_path = f'static/documents/{index}.json'
     data = load_json_file(json_path)
@@ -60,14 +42,36 @@ def get_info(index):
 def index():
     return render_template('index.html', categories=categories)
 
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
-    query = request.form['query']
+    query = request.args.get('query') if request.method == 'GET' else request.form['query']
+    ranklist = [
+    [0, 'https://en.wikipedia.org/wiki/Neckarfront', 4.320154330966258, 'neckarfront'],
+    [1, 'https://en.wikipedia.org/wiki/St._George%27s_Collegiate_Church,_T%C3%BCbingen', 4.294722935465357, 'ulrich'],
+    [2, 'https://en.wikivoyage.org/wiki/T%C3%BCbingen', 2.866682863719404, 'ulrich'],
+    [3, 'https://en.wikipedia.org/wiki/Friedrich_H%C3%B6lderlin', 2.1675640402040317, 'ulrich'],
+    [4, 'https://en.wikipedia.org/wiki/Stuttgart', 1.5731610178940094, 'ulrich']
+]
+    selected_filter = request.args.get('filter') if request.method == 'GET' else request.form.get('filter')
+    filter_count = Counter([result[3] for result in ranklist])
+    top_filters = [word for word, count in filter_count.most_common(5)]
+
     results = []
-    for idx, result in enumerate(search_results):
+    for result in ranklist:
+        if selected_filter and result[3] != selected_filter:
+            continue
+        idx = result[0]
         title, description, image_url = get_info(idx)
-        results.append({'url': result['url'], 'title': title, 'snippet': description, 'image': image_url})
-    return render_template('results.html', query=query, results=results, categories=categories)
+        results.append({'url': result[1], 'title': title, 'snippet': description, 'image': image_url})
+
+    return render_template('results.html', query=query, results=results, top_filters=top_filters, categories=categories)
+
+
+@app.route('/filter', methods=['POST'])
+def filter():
+    selected_filter = request.form['filter']
+    query = request.form['query']
+    return redirect(url_for('search', query=query, filter=selected_filter))
 
 if __name__ == '__main__':
     app.run(debug=True)
