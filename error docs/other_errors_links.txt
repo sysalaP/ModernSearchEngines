@@ -1,0 +1,13 @@
+https://tuebingenresearchcampus.com/en/tuebingen . Description:  
+https://www.my-stuwe.de/en/refectory/ . Description:  'src'
+https://www.unimuseum.uni-tuebingen.de/en/shop . Description:  HTTPSConnectionPool(host='www.unimuseum.uni-tuebingen.de', port=443): Max retries exceeded with url: /en/shop (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006)')))
+tunewsinternational.commailto:tunews@kreis-tuebingen.de . Description:  No connection adapters were found for 'tunewsinternational.commailto:tunews@kreis-tuebingen.de'https://uni-tuebingen.de/en/university/news-and-publications/press-releases/feed.xml . Description:  'NoneType' object has no attribute 'text'
+https://uni-tuebingen.deen/1 . Description:  HTTPSConnectionPool(host='uni-tuebingen.deen', port=443): Max retries exceeded with url: /1 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000020843920750>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+uni-tuebingen.detel:+4970712974444 . Description:  No connection adapters were found for 'uni-tuebingen.detel:+4970712974444'
+uni-tuebingen.dejavascript:linkTo_UnCryptMailto(%27ocknvq%2CuvwfkgtgpfgpugmtgvctkcvBbx0wpk%5C%2Fvwgdkpigp0fg%27); . Description:  No connection adapters were found for 'uni-tuebingen.dejavascript:linkTo_UnCryptMailto(%27ocknvq%2CuvwfkgtgpfgpugmtgvctkcvBbx0wpk%5C%2Fvwgdkpigp0fg%27);'
+kunsthalle-tuebingen.demailto:info@kunsthalle-tuebingen.de . Description:  No connection adapters were found for 'kunsthalle-tuebingen.demailto:info@kunsthalle-tuebingen.de'
+https:////en.wikipedia.org/wiki/Wikipedia:Contact_us . Description:  Invalid URL 'https:////en.wikipedia.org/wiki/Wikipedia:Contact_us': No host supplied
+http://www.studentenwerk.uni-tuebingen.de/wohnen/wohnheime/ . Description:  HTTPConnectionPool(host='www.studentenwerk.uni-tuebingen.de', port=80): Max retries exceeded with url: /wohnen/wohnheime/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002083EAD9210>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'))
+https://www.uni-tuebingen.de/index.php?eID=tx_nawsecuredl&u=0&g=0&t=1498103710&hash=9058de6bed19a72d634efeaecbe4fd1c2984f645&file=fileadmin/Uni_Tuebingen/Allgemein/Dokumente/Jahresberichte/UT_Jahresbericht_2016_DE-web.pdf . Description:  'NoneType' object has no attribute 'text'
+https://uni-tuebingen.de/fileadmin/Uni_Tuebingen/Allgemein/Dokumente/2006/06-01-19AkUniimNS.pdf . Description:  'NoneType' object has no attribute 'text'
+https://www.timeshighereducation.com/world-university-rankings/2024/world-ranking . Description:  'NoneType' object has no attribute 'text'
