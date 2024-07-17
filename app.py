@@ -2,6 +2,8 @@ from flask import Flask, render_template, request
 import json
 import logging
 import os
+from ipynb.fs.full.MSE_24_Group_Projects import retrieve
+
 
 app = Flask(__name__)
 
@@ -28,6 +30,8 @@ def load_search_results(file_path):
     except Exception as e:
         logging.error(f"Error loading search results from {file_path}: {e}")
     return []
+
+ranking = retrieve('tübingen location', load_json_file('index.json'))
 
 # Get the Image of each document
 def find_image(index):
