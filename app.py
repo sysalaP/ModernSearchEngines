@@ -16,6 +16,7 @@ def load_json_file(file_path):
         logging.error(f"Error loading JSON from {file_path}: {e}")
     return {}
 
+# Split of the attributes of the results
 def load_search_results(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -28,6 +29,7 @@ def load_search_results(file_path):
         logging.error(f"Error loading search results from {file_path}: {e}")
     return []
 
+# Get the Image of each document
 def find_image(index):
     supported_formats = ['.svg', '.png', '.jpg', '.jpeg']
     for fmt in supported_formats:
@@ -36,12 +38,12 @@ def find_image(index):
             return img_path
     return 'static/pictures/default_picture.jpg'
 
-# Pfad zur Textdatei mit den Suchergebnissen
+# Path search results
 search_results = load_search_results('src/search_results.txt')
+# Path categories
+categories = load_json_file('static/categories.json')
 
-# Pfad zur JSON-Datei mit den Kategorien
-categories = load_json_file('src/categories.json')
-
+#Get title and description
 def get_info(index):
     json_path = f'static/documents/{index}.json'
     data = load_json_file(json_path)
