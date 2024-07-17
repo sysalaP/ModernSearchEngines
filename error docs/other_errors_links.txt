@@ -11,3 +11,7 @@ http://www.studentenwerk.uni-tuebingen.de/wohnen/wohnheime/ . Description:  HTTP
 https://www.uni-tuebingen.de/index.php?eID=tx_nawsecuredl&u=0&g=0&t=1498103710&hash=9058de6bed19a72d634efeaecbe4fd1c2984f645&file=fileadmin/Uni_Tuebingen/Allgemein/Dokumente/Jahresberichte/UT_Jahresbericht_2016_DE-web.pdf . Description:  'NoneType' object has no attribute 'text'
 https://uni-tuebingen.de/fileadmin/Uni_Tuebingen/Allgemein/Dokumente/2006/06-01-19AkUniimNS.pdf . Description:  'NoneType' object has no attribute 'text'
 https://www.timeshighereducation.com/world-university-rankings/2024/world-ranking . Description:  'NoneType' object has no attribute 'text'
+Exception occured at link:  https://uni-tuebingen.de/en/einrichtungen/personalvertretungen-beratung-beauftragte/betriebliches-gesundheitsmanagement/ . Description:  Expecting value: line 1 column 1 (char 0)
+Exception occured at link:  https://uni-tuebingen.de/en/einrichtungen/personalvertretungen-beratung-beauftragte/datenschutzbeauftragter/ . Description:  Expecting value: line 1 column 1 (char 0)
+Exception occured at link:  https://uni-tuebingen.de/en/einrichtungen/personalvertretungen-beratung-beauftragte/digital-transformation-lab/ . Description:  Expecting value: line 1 column 1 (char 0)
+
