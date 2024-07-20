@@ -3,7 +3,7 @@ from nltk.corpus import stopwords
 
 #Create a hash for text thats similar for similar texts
 def computeHash(words):
-     hash_length = 64
+     hash_length = 128
      fingerprint = [0] * hash_length
      for word in words:
           #Hash the word and convert it to binary
@@ -24,7 +24,7 @@ def computeHash(words):
 
 #Check a single document Footprint/hash (docHash) against an existing collection of previsouly seen documents hashes (docsHashes) for near duplicates
 def check_simhash(docHash, docsHashes):
-     threshold = 7
+     threshold = 4
      hash = docHash
      for h in docsHashes:
           diff = 0
