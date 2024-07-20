@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSE2024</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function toggleClearButton() {
+            const input = document.getElementById('search-input');
+            const clearButton = document.getElementById('clear-button');
+            if (input.value.length > 0) {
+                clearButton.style.display = 'inline';
+            } else {
+                clearButton.style.display = 'none';
+            }
+        }
+
+        function clearSearchInput() {
+            const input = document.getElementById('search-input');
+            input.value = '';
+            toggleClearButton();
+        }
+
+        function submitQuery(query) {
+            const input = document.getElementById('search-input');
+            input.value = query;
+            document.getElementById('search-form').submit();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="search-container">
+            <form id="search-form" method="post" action="/search" oninput="toggleClearButton()">
+                <input type="text" id="search-input" name="query" placeholder="Search" required>
+                <button type="button" id="clear-button" onclick="clearSearchInput()" style="display: none;">&times;</button>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="search-results">
+            <h2>Search results for "{{ query }}":</h2>
+            <div class="filter-buttons">
+                {% for filter in top_filters %}
+                    <form method="post" action="/filter">
+                        <input type="hidden" name="query" value="{{ query }}">
+                        <button class="filter-button" type="submit" name="filter" value="{{ filter }}">{{ filter }}</button>
+                    </form>
+                {% endfor %}
+                <form method="post" action="/search">
+                    <input type="hidden" name="query" value="{{ query }}">
+                    <button class="filter-button" type="submit" name="filter" value="">Reset</button>
+                </form>
+            </div>
+            <div class="results-container">
+                {% for result in results %}
+                    <div class="result-item">
+                        <img src="{{ result.image }}" alt="{{ result.title }}" class="result-image">
+                        <div class="result-content">
+                            <a href="{{ result.url }}" target="_blank" class="result-title">{{ result.title }}</a>
+                            <p class="result-snippet">{{ result.snippet }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+</html>
