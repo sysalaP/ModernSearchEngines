@@ -8,7 +8,7 @@
 
 ```
 [{
-   "<term1>":[ [docID1, [positions in text it occurs], skipPointer[index to skip to within postinglist, docID at that index]/ None (if no skip pointer here)], 
+   "<term1>":[ [docID1, [positions in text it occurs], skipPointer[index to skip to within postinglist, docID at that index]<br/>/ None (if no skip pointer here)], 
                                       [docID2, [positions in text it occurs], skipPointer]
                                             ...
                                       <docIDx, [positions in text it occurs], skipPointer]],
