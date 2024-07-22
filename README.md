@@ -6,7 +6,7 @@
 - `frontier.json`: frontier and already seen links so far
 - `index.json`: contains the index in JSON-Format in the following form:
 
-```json
+```
 [{
    "<term1>":[ [docID1, [positions in text it occurs], skipPointer[index to skip to within postinglist, docID at that index]/ None (if no skip pointer here)], 
                                       [docID2, [positions in text it occurs], skipPointer]
