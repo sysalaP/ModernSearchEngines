@@ -44,9 +44,8 @@ After you crawled enough run the Cell `Cluster, add additional infos to index` t
 and add the cluster labels and some other missing data (like skip pointers) to the index.
 
 ## Interactive User Interface
-Before you can run the user interface, please run the cell under `2. query processing` and the first and second code cell of this document once in order to instanciate the neccessary functions.
-Run the cell 12 to start Flask and open the given url.  
+Before you can run the user interface, please run the cell under `2. query processing` and the first and second code cell of this document once to instantiate the necessary functions. Run the cell 12 to start Flask and open the given URL. 
 
 ## Search from text file
-Before you can run the user interface, please run the cell under `2. query processing` and the first and second code cell of this document once in order to instanciate the neccessary functions.
+Before you can run the user interface, please run the cell under `2. query processing` and the first and second code cell of this document once to instantiate the necessary functions.
 Run the first cell under `3. Search result presentation`.
